@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO TAGS: This makes you visible on Google -->
+    <title>Class C3 | Presentations & Academic Portal</title>
+    <meta name="description" content="Official Class C3 presentation portal by Diplap. View academic presentations, projects, and resources from Southwestern State College.">
+    <meta name="keywords" content="Diplap, Class C3, Southwestern State College, Presentations, Academic Portal">
+    <meta name="author" content="Diplap">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    
+    <style>
+        :root {
+            --bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --text: #f8fafc;
+            --accent: #8b5cf6;
+            --accent2: #22d3ee;
+            --border: rgba(255, 255, 255, 0.08);
+            --glass: blur(25px) saturate(200%);
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Plus Jakarta Sans',sans-serif; transition:all 0.4s ease; }
+        body { background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden; padding:2rem; position:relative; }
+
+        .mesh-gradient { position:fixed; inset:0; z-index:-2; background: radial-gradient(circle at 30% 20%, rgba(139,92,246,0.15) 0px,transparent 50%), radial-gradient(circle at 70% 80%, rgba(34,211,238,0.15) 0px,transparent 50%); animation: meshMove 40s linear infinite; }
+        @keyframes meshMove { 0%,100%{background-position:0 0;} 50%{background-position:20% 20%;} }
+
+        header { text-align:center; max-width:900px; margin:0 auto 5rem auto; }
+        header .brand-tag { display:inline-block; background:linear-gradient(90deg,var(--accent2),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:800; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.4em; margin-bottom:1rem; }
+        header h1 { font-size:clamp(2.5rem,5vw,4rem); font-weight:800; color:#fff; margin-bottom:2rem; }
+        
+        /* Modified for GitHub: Leads to your other site or admin */
+        .add-btn { display:inline-flex; align-items:center; padding:16px 32px; background:var(--accent2); color:#000; text-decoration:none; font-weight:700; border-radius:100px; box-shadow:0 10px 20px rgba(34,211,238,0.3); }
+        .add-btn:hover { transform:scale(1.05); background:#fff; }
+
+        .grid-container { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:2.5rem; max-width:1300px; margin:0 auto; }
+        .card { background:var(--card-bg); backdrop-filter:var(--glass); -webkit-backdrop-filter:var(--glass); border:1px solid var(--border); border-radius:30px; padding:2.5rem; position:relative; overflow:hidden; }
+        .card:hover { transform:translateY(-12px); border-color:var(--accent2); box-shadow:0 30px 60px -15px rgba(0,0,0,0.6); }
+        .card h3 { font-size:1.6rem; font-weight:700; margin-bottom:1.5rem; color:#fff; }
+        
+        .meta-box { margin-bottom:2rem; }
+        .meta-item { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+        .meta-label { font-size:0.75rem; color:#94a3b8; text-transform:uppercase; font-weight:700; }
+        
+        .card .btn { width:100%; padding:16px; background:rgba(255,255,255,0.05); color:#fff; border-radius:18px; text-decoration:none; font-weight:600; text-align:center; display:block; border:1px solid var(--border); }
+        .card:hover .btn { background:var(--accent2); color:#000; }
+
+        .id-circle { position:fixed; top:25px; right:25px; width:65px; height:65px; border-radius:50%; background:url('og-image.png') center/cover; border:3px solid var(--accent2); cursor:pointer; z-index:1000; box-shadow:0 0 20px rgba(34,211,238,0.5); }
+        
+        .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; z-index:99999; opacity:0; pointer-events:none; transition:0.4s; }
+        .modal-overlay.active { opacity:1; pointer-events:auto; }
+        .modal-card { background:#0f172a; border:1px solid var(--accent2); border-radius:32px; padding:2.5rem; width:90%; max-width:420px; text-align:center; position:relative; transform:translateY(50px); transition:0.4s; }
+        .modal-overlay.active .modal-card { transform:translateY(0); }
+        .modal-img { width:110px; height:110px; border-radius:50%; border:3px solid var(--accent2); margin-bottom:1.2rem; }
+        .close-modal { position:absolute; top:20px; right:20px; background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; }
+
+        #diplapGameBtn, #diplaptyping { position:fixed; bottom:30px; padding:16px 28px; font-weight:800; border:none; border-radius:20px; cursor:pointer; z-index:9999; display:none; color:white; }
+        #diplapGameBtn { right:30px; background:linear-gradient(135deg,#f59e0b,#d97706); }
+        #diplaptyping { left:30px; background:linear-gradient(135deg,#6366f1,#4f46e5); }
+    </style>
+</head>
+<body>
+
+<div class="mesh-gradient"></div>
+
+<div class="id-circle" onclick="showMyID()"></div>
+
+<div id="idModal" class="modal-overlay" onclick="closeID()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+        <button class="close-modal" onclick="closeID()">&times;</button>
+        <img src="og-image.png" class="modal-img" alt="Diplap">
+        <h2 style="color:white">Diplap</h2>
+        <p style="color:var(--accent2); text-transform:uppercase; letter-spacing:2px; font-size:0.8rem; margin-bottom:15px;">Developer & AI Enthusiast</p>
+        <p style="margin-bottom:20px; opacity:0.8;">Southwestern State College | Grade 12</p>
+        <div style="display:flex; gap:10px; justify-content:center;">
+            <a href="https://facebook.com/Curious.soul.1" target="_blank" style="color:white; font-size:1.5rem;"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://tiktok.com/@dip_lap_2024" target="_blank" style="color:white; font-size:1.5rem;"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="brand-tag">Diplap Academic Portal</div>
+    <h1>Class C3 Presentations</h1>
+    <a href="https://your-infinity-free-site.com/admin" class="add-btn">
+        <i class="fa-solid fa-link" style="margin-right:10px"></i> Visit Main Portal
+    </a>
+</header>
+
+<main>
+    <div class="grid-container" id="presentationGrid">
+        <!-- JavaScript will inject cards here -->
+    </div>
+</main>
+
+<button id="diplapGameBtn" onclick="window.open('https://c3.gt.tc/multigame.html','_blank')">GAMES 🎮</button>
+<button id="diplaptyping" onclick="window.open('https://c3.gt.tc/typing','_blank')">TYPING ⌨️</button>
+
+<script>
+    // --- DATA SECTION: ADD YOUR PRESENTATIONS HERE ---
+    const presentations = [
+        {
+            title: "Quantum Computing Basics",
+            subject: "Computer Science",
+            presenter: "Group Alpha",
+            link: "https://www.canva.com/design/DAF.../view"
+        },
+        {
+            title: "Nepalese Economy 2024",
+            subject: "Social Studies",
+            presenter: "Diplap & Team",
+            link: "https://c3.gt.tc/presentation1"
+        }
+    ];
+
+    function loadPresentations() {
+        const grid = document.getElementById('presentationGrid');
+        grid.innerHTML = presentations.map(p => {
+            const encodedLink = encodeURIComponent(p.link);
+            const isSpecial = p.link.includes('canva.com') || p.link.includes('/embed');
+            const finalLink = isSpecial ? `https://c3.gt.tc/player/?link=${encodedLink}` : p.link;
+
+            return `
+                <div class="card">
+                    <h3>${p.title}</h3>
+                    <div class="meta-box">
+                        <div class="meta-item">
+                            <span class="meta-label">Subject:</span>
+                            <span>${p.subject}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Presenter:</span>
+                            <span>${p.presenter}</span>
+                        </div>
+                    </div>
+                    <a href="${finalLink}" target="_blank" class="btn">Launch Presentation</a>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Modal Functions
+    function showMyID() { document.getElementById('idModal').classList.add('active'); }
+    function closeID() { document.getElementById('idModal').classList.remove('active'); }
+
+    // Init
+    window.onload = () => {
+        loadPresentations();
+        setTimeout(() => {
+            document.getElementById('diplapGameBtn').style.display = 'block';
+            document.getElementById('diplaptyping').style.display = 'block';
+        }, 3000);
+    };
+</script>
+
+</body>
+</html>
